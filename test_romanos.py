@@ -17,6 +17,11 @@ class RomanosFuncionesTest(unittest.TestCase):
     def test_arabigo_a_romano_solo_enteros_positivos(self):
         with self.assertRaises(ValueError):
             arabigo_a_romano(-23)
+    
+    def test_romano_a_arabigo_mayor_de_4000(self):
+        self.assertEqual(arabigo_a_romano(1720322),'(MDCCXX)CCCXXII')
+
+
 
 class RomanosFuncionesAromanoTest(unittest.TestCase):
     def test_a_romano_a_arabigo_tres_repeticiones_OK(self):
@@ -46,7 +51,18 @@ class RomanosFuncionesAromanoTest(unittest.TestCase):
     def test_romano_a_arabigo_tras_repeticion_no_se_resta(self):
         with self.assertRaises(RomanError):
             romano_a_arabigo('XXL')
+        
+        self.assertEqual(romano_a_arabigo('XXIII'), 23)
+    
+    def test_romano_a_arabigo_restas_prohibidas(self):
+        with self.assertRaises(RomanError):
+            romano_a_arabigo('XM')
 
 
 
 
+
+"""
+    def test_romano_a_arabigo_simbolos_incorrectos(self):
+        with self.assertRaises(RomanError):
+"""
